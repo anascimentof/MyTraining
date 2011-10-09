@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="br.com.training.activity"
+      android:versionCode="1"
+      android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-sdk android:minSdkVersion="7" />
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".MenuPrincipal" 
+        		  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        
+        <activity android:enabled="true" android:name=".MenuManutencao" android:label="Menu &gt;&gt; Manutenção"></activity>
+        <activity android:name=".equipamento.ListaEquipamento" android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Equipamento"></activity>
+        <activity android:name=".equipamento.FormEquipamento" android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Equipamento"></activity>
+        
+        <activity android:name=".marcaequipamento.ListaMarcaEquipamento" android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Marca Equipamento"></activity>
+        <activity android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Marca Equipamento" android:name=".marcaequipamento.FormMarcaEquipamento"></activity>
+        <activity android:name=".categoriamuscular.ListaCategoriaMuscular" android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Categoria Muscular"></activity><activity android:name=".categoriamuscular.FormCategoriaMuscular" android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Categoria Muscular"></activity>
+        <activity android:enabled="true" android:name=".musculo.FormMusculo" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Músculo"></activity>
+        <activity android:name=".musculo.ListaMusculo" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Músculo"></activity>
+       
+
+    </application>
+</manifest>

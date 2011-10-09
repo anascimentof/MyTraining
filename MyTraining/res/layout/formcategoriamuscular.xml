@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/formcategoriamuscular"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:orientation="vertical">
+<br.com.training.components.ConsistenciaMSG android:id="@+formcategoriamuscular/textoconsistencia" android:layout_height="wrap_content" android:layout_width="fill_parent"/>
+<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/AMARELO" android:text="Descrição da Categoria Muscular" android:id="@+formcategoriamuscular/txtdescricao"></TextView>
+<EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLength="50" android:maxLines="1" android:id="@+formcategoriamuscular/descricao"></EditText>
+<LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:layout_height="fill_parent" android:layout_gravity="bottom">
+<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@+formcategoriamuscular/salvar" android:layout_weight="1" android:src="@drawable/salvar"></ImageButton>
+<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@+formcategoriamuscular/voltar" android:layout_weight="1" android:src="@drawable/cancelar"></ImageButton>
+</LinearLayout>
+</LinearLayout>

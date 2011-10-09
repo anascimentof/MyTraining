@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <br.com.training.components.ConsistenciaMSG android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+formmusculo/txtconsistecia"></br.com.training.components.ConsistenciaMSG>
+  <TextView android:layout_height="wrap_content" android:textColor="@color/AMARELO" android:text="Descrição do Músculo" android:layout_width="fill_parent" android:id="@+formmusculo/txtdescricao"></TextView>
+  <EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:lines="1" android:maxLines="1" android:maxLength="50" android:id="@+formmusculo/edtdescricao">  </EditText>
+  <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="289dp">
+      <ListView android:layout_height="wrap_content" android:id="@+formmusculo/lista" android:layout_width="fill_parent"></ListView>
+  </LinearLayout>
+  <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="match_parent">
+      <ImageButton android:layout_height="wrap_content" android:src="@drawable/salvar" android:layout_gravity="bottom" android:layout_weight="1" android:layout_width="0dp" android:id="@+formmusculo/btmsalvar"></ImageButton>
+      <ImageButton android:layout_height="wrap_content" android:src="@drawable/cancelar" android:layout_gravity="bottom" android:layout_weight="1" android:layout_width="0dp" android:id="@+formmusculo/btnvoltar"></ImageButton>
+  </LinearLayout>
+</LinearLayout>

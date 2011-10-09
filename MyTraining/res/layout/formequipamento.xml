@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:orientation="vertical" android:id="@+formEquipamento/lista">
+  	<br.com.training.components.ConsistenciaMSG
+  	android:id="@+formEquipamento/textoconsistencia"
+  	android:layout_height="wrap_content" 
+  	android:layout_width="fill_parent"
+  	/>
+    <TextView android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+formEquipamento/textequipamento" android:text="Descrição do Equipamento" android:textColor="@color/AMARELO"></TextView>
+    <EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+formEquipamento/equipamento" android:textSize="18sp"></EditText>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Marca" android:id="@+formEquipamento/textmarca" android:textColor="@color/AMARELO"></TextView>
+    <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+formEquipamento/combomarca" android:drawSelectorOnTop="true"></Spinner>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@+formEquipamento/salvar" android:src="@drawable/novo" android:layout_weight="1"></ImageButton>
+        <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@+formEquipamento/cancelar" android:src="@drawable/cancelar" android:layout_weight="1"></ImageButton>
+    </LinearLayout>
+</LinearLayout>
