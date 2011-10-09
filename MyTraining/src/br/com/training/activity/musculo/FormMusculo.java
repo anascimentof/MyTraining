@@ -85,7 +85,7 @@ public class FormMusculo extends Activity {
 	}
 	
 	public void carregarListaCategorias(){
-		int count1 = 0;
+		int count = 0;
 
 		CategoriaMuscularDAO ctgDAO = new CategoriaMuscularDAO(FormMusculo.this);
 		
@@ -99,21 +99,23 @@ public class FormMusculo extends Activity {
 		lstSelecaoCategorias.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		lstSelecaoCategorias.setAdapter(adapter);
 		
+		//Caso o musculo já existir ( modo de ALTERAÇÃO ) a rotina abaixo retorna as categorias do musculos já selecionadas
 		if(musculo.getCodigo() != 0){
 			
-			// TODO TESTAR
-			count1 = lstSelecaoCategorias.getAdapter().getCount();
+			count = lstSelecaoCategorias.getAdapter().getCount();
 			
 			Iterator<CategoriaMuscular> i = musculo.getCategMuscular().iterator();
 			while ( i.hasNext() ) {
 				CategoriaMuscular categoria  = (CategoriaMuscular) i.next();
-				for (int j = 0; j < count1; j++) {
+				for (int j = 0; j < count; j++) {
 					CategoriaMuscular listaCategoria = (CategoriaMuscular) lstSelecaoCategorias.getAdapter().getItem(j);
 					if(categoria.getCodigo() == listaCategoria.getCodigo()){
 						lstSelecaoCategorias.setItemChecked(j, true);
+						break;
 					}
 				}
-			}		
+			}
+
 		}
 		
 	}
