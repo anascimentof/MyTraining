@@ -8,8 +8,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -122,6 +120,7 @@ public class FormMusculo extends Activity {
 	
 	public void carregarItensSelecionados(){
 		int count = lstSelecaoCategorias.getAdapter().getCount();
+		musculo.limparCategorias();
 		for (int i = 0; i < count; i++) {
 			if(lstSelecaoCategorias.isItemChecked(i)){
 				CategoriaMuscular categoria = (CategoriaMuscular) lstSelecaoCategorias.getItemAtPosition(i);

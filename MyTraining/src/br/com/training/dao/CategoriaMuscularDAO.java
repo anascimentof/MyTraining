@@ -34,6 +34,7 @@ public class CategoriaMuscularDAO extends SQLiteOpenHelper {
 	// METODO DE SALVAR ( INCLUIR / ALTERAR ) NA BASE
 	public void salvar(CategoriaMuscular ctm){
 		SQLiteDatabase db = getWritableDatabase();
+		db.beginTransaction();
 		long id = ctm.getCodigo();
 		try {
 			values = obterContentValues(ctm);
@@ -42,20 +43,25 @@ public class CategoriaMuscularDAO extends SQLiteOpenHelper {
 			}else{
 				db.insert(TABELA, null, values);
 			}
+			db.setTransactionSuccessful();
 		} catch (SQLException e) {
 			Log.e("CategoriaMuscular", "Erro inserir/atualizar " + e.getStackTrace() );
 		}finally{
-			if (db!= null) db.close();
+			db.endTransaction();
+			if (db!= null) db.close();			
 		}
 	}
 	// METODO DE EXCLUSÃO DE CATEGORIA NO BANCO
 	public void deletar(CategoriaMuscular ctm){
 		SQLiteDatabase db = getWritableDatabase();
+		db.beginTransaction();
 		try {
 			db.delete(TABELA, "codigo=?", new String[] { ctm.getCodigoString() } ); 
+			db.setTransactionSuccessful();
 		} catch (SQLException e) {
 			Log.e("CategoriaMuscular", "Erro ao deletar: " + e.getStackTrace() );
 		}finally{
+			db.endTransaction();
 			if (db != null) db.close();
 		}
 		

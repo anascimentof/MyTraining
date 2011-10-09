@@ -41,7 +41,7 @@ public class MusculoDAO extends SQLiteOpenHelper {
 	public void salvar(Musculo musculo){
 		ContentValues	dados;
 		Cursor			c 				= null;
-		long			id 				= musculo.getCodigo();
+		int				id 				= musculo.getCodigo();
 		SQLiteDatabase	db 				= getWritableDatabase();
 		int 			codigoMusculo	= 0;
 		
@@ -49,19 +49,28 @@ public class MusculoDAO extends SQLiteOpenHelper {
 			db.beginTransaction();
 			dados = obterContentValuesMusculo(musculo);
 			if(id!=0){
+				// Atualiza a descrição do musculo na tabela TBMUSCULO
 				db.update(TBMUSCULO, dados, "codigo=?", new String[]{ musculo.getCodigoString() } );
+				dados.clear();
+				// Deleta todas as referências entre musculo e as categorias gravadas
+				db.delete(TBMUSCULOCATEGORIA, "cdmusculo=?", new String[]{ musculo.getCodigoString() } );
+				// Carrega cada categoria selecionada do musculo para inserir na tabela TBMUSCULOCATEGORIA
+				Iterator<CategoriaMuscular> i = musculo.getCategMuscular().iterator();
+				while(i.hasNext()){
+					CategoriaMuscular categoria = (CategoriaMuscular) i.next();
+					dados.putAll( obterContentValuesMusculoCategoria(musculo.getCodigo(), categoria.getCodigo()) );
+					db.insert(TBMUSCULOCATEGORIA, null, dados);
+				}
+				db.setTransactionSuccessful();
 			}else{
-				
 				// Inserir registro na tabela Musculo 
 				db.insert(TBMUSCULO, null, dados);
 				dados.clear();
-				
 				// Retornar o último codigo do musculo para passar para o obterContentValuesMusculoCategoria
 				c = db.rawQuery("Select codigo From " + TBMUSCULO + " Order By codigo Desc Limit 1", null);
 				if (c != null && c.moveToFirst() ){
 					codigoMusculo = c.getInt(CODIGOMUSCULO);
 				}
-				
 				// Ler as categrias do musculo e gravar na tabela TBMusculoCategoria
 				Iterator<CategoriaMuscular> i = musculo.getCategMuscular().iterator();
 				while (i.hasNext()) {

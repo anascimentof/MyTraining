@@ -41,6 +41,7 @@ public class EquipamentoDAO extends SQLiteOpenHelper {
 		ContentValues 	dados;
 		long 			id = equipamento.getCodigo();
 		SQLiteDatabase 	db = getWritableDatabase();
+		db.beginTransaction();
 		try{
 			dados = obterContetValues(equipamento);
 			if (id != 0) { 
@@ -48,9 +49,11 @@ public class EquipamentoDAO extends SQLiteOpenHelper {
 			} else {			 
 				db.insert(TABELA, null, dados);
 			}
+			db.setTransactionSuccessful();
 		}catch (SQLException e) {
 			Log.e("Equipamento", "Erro Inserir: " + e.toString());
 		}finally{
+			db.endTransaction();
 			if(db != null) db.close();
 		}
 	}
@@ -90,15 +93,18 @@ public class EquipamentoDAO extends SQLiteOpenHelper {
 		}
 		return listaEquipamento;		
 	}
-
+	
 	//METODO DELETAR EQUIPAMENTOS NO BANCO
 	public void deletar(Equipamento equipamento){
 		SQLiteDatabase db = getWritableDatabase();
+		db.beginTransaction();
 		try{
 			db.delete(TABELA, "codigo=?", new String[] { String.valueOf(equipamento.getCodigo()) }  );
+			db.setTransactionSuccessful();
 		}catch(SQLException e){
 			Log.e("Equipamento", "Erro Deletar: " + e.toString());
 		}finally{
+			db.endTransaction();
 			if(db != null) db.close();
 		}
 	}
