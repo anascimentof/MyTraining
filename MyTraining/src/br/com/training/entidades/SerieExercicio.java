@@ -1,19 +1,23 @@
 package br.com.training.entidades;
 
 public class SerieExercicio {
-	private Musculacao musculacao;
+	private ExMusculacao musculacao;
 	private int repeticao;
 	private float peso;
 	
-	public SerieExercicio(Musculacao musculacao, int repeticao, float peso) {
+	public SerieExercicio(){
+		super();
+	}
+	
+	public SerieExercicio(ExMusculacao musculacao, int repeticao, float peso) {
 		this.musculacao = musculacao;
 		this.repeticao = repeticao;
 		this.peso = peso;
 	}
-	public Musculacao getMusculacao() {
+	public ExMusculacao getMusculacao() {
 		return musculacao;
 	}
-	public void setMusculacao(Musculacao musculacao) {
+	public void setMusculacao(ExMusculacao musculacao) {
 		this.musculacao = musculacao;
 	}
 	public int getRepeticao() {

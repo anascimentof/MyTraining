@@ -1,21 +1,21 @@
 package br.com.training.entidades;
 
-public class Musculacao extends Exercicio {
-	private Equipamento equipamento[];
-	private Musculo musculos[];
-	private SerieExercicio serie[];
-	private String velocidade;
-	private int tempoDescanso;
-	private String modoExecução;
-	private String tipoPegada;
-	private String posicaoBanco;
-	private String amplitudade;
+public class ExMusculacao extends Exercicio {
+	private Equipamento 	equipamento[];
+	private Musculo			musculos[];
+	private SerieExercicio 	serie[];
+	private String 			velocidade;
+	private int 			tempoDescanso;
+	private String 			modoExecução;
+	private String 			tipoPegada;
+	private String 			posicaoBanco;
+	private String 			amplitudade;
 	
-	public Musculacao(){
+	public ExMusculacao(){
 		super();
 	}
 	
-	public Musculacao(int codigo, String descricao, String obs , Equipamento[] equipamento, Musculo[] musculos,
+	public ExMusculacao(int codigo, String descricao, String obs , Equipamento[] equipamento, Musculo[] musculos,
 			SerieExercicio[] serie, String velocidade, int tempoDescanso,
 			String modoExecução, String tipoPegada, String posicaoBanco,
 			String amplitudade, String tipoExercicio) {

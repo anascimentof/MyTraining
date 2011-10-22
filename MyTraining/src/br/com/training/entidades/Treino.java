@@ -1,20 +1,20 @@
 package br.com.training.entidades;
 
-import android.text.format.Time;
+import java.util.Timer;
 
 public class Treino {
 
 	private String codigo;
 	private String descricao;
-	private Musculacao exMuscular[];
-	private Time tempoDuracao;
+	private ExMusculacao exMuscular[];
+	private Timer tempoDuracao;
 
 	public Treino(){
-		
+		super();
 	}
 
-	public Treino(String codigo, String descricao, Musculacao[] exMuscular,
-			Time tempoDuracao) {
+	public Treino(String codigo, String descricao, ExMusculacao[] exMuscular,
+			Timer tempoDuracao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.exMuscular = exMuscular;
@@ -37,19 +37,19 @@ public class Treino {
 		this.descricao = descricao;
 	}
 
-	public Musculacao[] getExMuscular() {
+	public ExMusculacao[] getExMuscular() {
 		return exMuscular;
 	}
 
-	public void setExMuscular(Musculacao[] exMuscular) {
+	public void setExMuscular(ExMusculacao[] exMuscular) {
 		this.exMuscular = exMuscular;
 	}
 
-	public Time getTempoDuracao() {
+	public Timer getTempoDuracao() {
 		return tempoDuracao;
 	}
 
-	public void setTempoDuracao(Time tempoDuracao) {
+	public void setTempoDuracao(Timer tempoDuracao) {
 		this.tempoDuracao = tempoDuracao;
 	}
 	
