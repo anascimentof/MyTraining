@@ -116,6 +116,7 @@ public class FormEquipamento extends Activity {
 		}
 	}
 	//METODO DE RETORNAR A POSICAO DE UM OBJETO MARCA NO COMBOMARCA 
+	@SuppressWarnings("unchecked")
 	private int retornaPosicaoCombo(MarcaEquipamento me){
 		posicao = -1;
 		ArrayAdapter<MarcaEquipamento> comboAdapter = (ArrayAdapter<MarcaEquipamento>) comboMarca.getAdapter(); 
