@@ -16,9 +16,9 @@ import br.com.training.dao.MyDataBase;
 
 public class MenuPrincipal extends ListActivity {
 	private MyDataBase 			db 			= null;	
-	private String[] 			opcoes 		= new String[] { "Agenda" , "Plano" , "Manutenção", "Sair" };	
+	private String[] 			opcoes 		= new String[] { "Agenda" , "Treino" , "Manutenção", "Sair" };	
 	private static final int 	AGENDA		= 0;
-	private static final int 	PLANO		= 1;
+	private static final int 	TREINO		= 1;
 	private static final int 	MANUTENCAO	= 2;
 		
 	public void onCreate(Bundle icicle){
@@ -41,8 +41,8 @@ public class MenuPrincipal extends ListActivity {
 		case AGENDA:
 			Toast.makeText(this, "Agenda", Toast.LENGTH_SHORT).show();
 			break;
-		case PLANO:
-			Toast.makeText(this, "Plano", Toast.LENGTH_SHORT).show();
+		case TREINO:
+			Toast.makeText(this, "Treino", Toast.LENGTH_SHORT).show();
 			break;
 		case MANUTENCAO:
 			startActivity(new Intent(this , MenuManutencao.class) ) ;

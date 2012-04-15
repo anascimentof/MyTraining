@@ -7,7 +7,7 @@ public class Exercicio {
 	private String tipoExercicio;
 	
 	protected Exercicio(){
-		super();
+		
 	}
 	
 	protected int getCodigo() {

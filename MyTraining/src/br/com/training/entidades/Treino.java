@@ -1,35 +1,32 @@
 package br.com.training.entidades;
 
-import java.io.Serializable;
-import java.util.Timer;
+import android.text.format.Time;
 
-public class Treino implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	private String cdPlano;
-	private String cdTreino;
+public class Treino {
+
+	private String codigo;
 	private String descricao;
-	private ExMusculacao exMuscular[];
-	private Timer tempoDuracao;
+	private Musculacao exMuscular[];
+	private Time tempoDuracao;
 
 	public Treino(){
-		super();
+		
 	}
 
-	public Treino(String codigo, String descricao, ExMusculacao[] exMuscular,
-			Timer tempoDuracao) {
-		this.cdTreino = codigo;
+	public Treino(String codigo, String descricao, Musculacao[] exMuscular,
+			Time tempoDuracao) {
+		this.codigo = codigo;
 		this.descricao = descricao;
 		this.exMuscular = exMuscular;
 		this.tempoDuracao = tempoDuracao;
 	}
 
 	public String getCodigo() {
-		return cdTreino;
+		return codigo;
 	}
 
 	public void setCodigo(String codigo) {
-		this.cdTreino = codigo;
+		this.codigo = codigo;
 	}
 
 	public String getDescricao() {
@@ -40,27 +37,20 @@ public class Treino implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public ExMusculacao[] getExMuscular() {
+	public Musculacao[] getExMuscular() {
 		return exMuscular;
 	}
 
-	public void setExMuscular(ExMusculacao[] exMuscular) {
+	public void setExMuscular(Musculacao[] exMuscular) {
 		this.exMuscular = exMuscular;
 	}
 
-	public Timer getTempoDuracao() {
+	public Time getTempoDuracao() {
 		return tempoDuracao;
 	}
 
-	public void setTempoDuracao(Timer tempoDuracao) {
+	public void setTempoDuracao(Time tempoDuracao) {
 		this.tempoDuracao = tempoDuracao;
 	}
-
-	public String getCdPlano() {
-		return cdPlano;
-	}
-
-	public void setCdPlano(String cdPlano) {
-		this.cdPlano = cdPlano;
-	}
+	
 }

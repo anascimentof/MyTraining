@@ -14,9 +14,6 @@ import br.com.training.entidades.MarcaEquipamento;
 
 public class MarcaEquipamentoDAO extends SQLiteOpenHelper {
 
-	private static final String 	BANCO  				  = "MyTraining.db"	;
-	private static final String 	TABELA 				  = "TbMarcaEquipamento";
-	private static final int 		VERSAO 				  = 1;
 	private static final String[]	COLS 				  = {"codigo", "descricao" };
 	private List<MarcaEquipamento>	listaMarcaEquipamento = new ArrayList<MarcaEquipamento>();
 	private static final int		CODIGO 				  = 0;
@@ -24,7 +21,7 @@ public class MarcaEquipamentoDAO extends SQLiteOpenHelper {
 	
 	// CONSTRUTOR DA CLASSE
 	public MarcaEquipamentoDAO(Context context) {
-		super(context, BANCO, null, VERSAO);
+		super(context, MyDataBase.BANCO, null, MyDataBase.VERSAO);
 	}
 
 	@Override
@@ -42,9 +39,9 @@ public class MarcaEquipamentoDAO extends SQLiteOpenHelper {
 		try{
 			dados = obterContetValues(marcaequipamento);
 			if (id != 0) { 
-				db.update(TABELA, dados, "codigo=?", new String[] {marcaequipamento.getCodigoString()} );
+				db.update(MyDataBase.TBMARCAEQUIPAMENTO, dados, "codigo=?", new String[] {marcaequipamento.getCodigoString()} );
 			} else {			 
-				db.insert(TABELA, null, dados);
+				db.insert(MyDataBase.TBMARCAEQUIPAMENTO, null, dados);
 			}
 			db.setTransactionSuccessful();
 		}catch (SQLException e) {
@@ -69,7 +66,7 @@ public class MarcaEquipamentoDAO extends SQLiteOpenHelper {
 		Cursor 			cursor = null;
 		try{			
 			db = getReadableDatabase();
-			cursor = db.query(TABELA, COLS, null, null, null, null, null);
+			cursor = db.query(MyDataBase.TBMARCAEQUIPAMENTO, COLS, null, null, null, null, null);
 			while (cursor.moveToNext()) {
 				MarcaEquipamento marcaequipamento = new MarcaEquipamento();
 				marcaequipamento.setCodigo(cursor.getInt(CODIGO)); 		
@@ -93,7 +90,7 @@ public class MarcaEquipamentoDAO extends SQLiteOpenHelper {
 		MarcaEquipamento 	me = null;
 		try {
 			db 		= getReadableDatabase();
-			cursor	= db.query(TABELA, COLS, "codigo=?", new String[] { String.valueOf(codigo) }, null, null, null);		
+			cursor	= db.query(MyDataBase.TBMARCAEQUIPAMENTO, COLS, "codigo=?", new String[] { String.valueOf(codigo) }, null, null, null);		
 			if ( cursor.moveToFirst() ){
 				me	= new MarcaEquipamento();
 				me.setCodigo(cursor.getInt(CODIGO));
@@ -117,7 +114,7 @@ public class MarcaEquipamentoDAO extends SQLiteOpenHelper {
 		SQLiteDatabase db = getWritableDatabase();
 		db.beginTransaction();
 		try{
-			db.delete(TABELA, "codigo=?", new String[] { marcaequipamento.getCodigoString()}  );
+			db.delete(MyDataBase.TBMARCAEQUIPAMENTO, "codigo=?", new String[] { String.valueOf(marcaequipamento.getCodigo()) }  );
 			db.setTransactionSuccessful();
 		}catch(SQLException e){
 			Log.e("Marca Equipamento", "Erro Deletar: " + e.toString());

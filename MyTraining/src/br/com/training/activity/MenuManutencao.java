@@ -11,23 +11,22 @@ import br.com.training.activity.categoriamuscular.ListaCategoriaMuscular;
 import br.com.training.activity.equipamento.ListaEquipamento;
 import br.com.training.activity.marcaequipamento.ListaMarcaEquipamento;
 import br.com.training.activity.musculo.ListaMusculo;
-import br.com.training.activity.teste.ListaTeste;
-import br.com.training.activity.treino.ListaTreino;
 
 public class MenuManutencao extends ListActivity {
-	private String[] opcoes = new String[] { "Categoria Muscular" , 
+	private String[] opcoes = new String[] { "Categoria Muscular" ,
+											 "Músculo",
 											 "Equipamento" , 
 											 "Marca Equipamento",
-											 "Músculo",
-											 "Treino",
-											 "Teste",
+											 "GrupoExercio",
+											 "Exercio",
 											 "Voltar"};	
+	
 	private static final int CATEGORIA_MUSCULAR = 0;
-	private static final int EQUIPAMENTO 		= 1;
-	private static final int MARCA_EQUIPAMENTO	= 2;
-	private static final int MUSCULO 			= 3;
-	private static final int TREINO				= 4;
-	private static final int TESTE				= 5;
+	private static final int MUSCULO 			= 1;
+	private static final int EQUIPAMENTO 		= 2;
+	private static final int MARCA_EQUIPAMENTO	= 3;
+	private static final int GRUPO_EXERCICIO	= 4;
+	private static final int EXERCICIO			= 5;
 	
 	@Override
 	public void onCreate(Bundle icicle){
@@ -42,20 +41,14 @@ public class MenuManutencao extends ListActivity {
 		case CATEGORIA_MUSCULAR:
 			startActivity(new Intent(MenuManutencao.this, ListaCategoriaMuscular.class));
 			break;
+		case MUSCULO:
+			startActivity(new Intent(MenuManutencao.this, ListaMusculo.class));
+			break;			
 		case EQUIPAMENTO:
 			startActivity(new Intent(MenuManutencao.this, ListaEquipamento.class));
 			break;
 		case MARCA_EQUIPAMENTO:	
 			startActivity(new Intent(MenuManutencao.this, ListaMarcaEquipamento.class )); 
-			break;
-		case MUSCULO:
-			startActivity(new Intent(MenuManutencao.this, ListaMusculo.class));
-			break;
-		case TREINO:
-			startActivity(new Intent(MenuManutencao.this, ListaTreino.class));
-			break;
-		case TESTE:
-			startActivity(new Intent(MenuManutencao.this, ListaTeste.class));
 			break;
 		default:
 			finish();
