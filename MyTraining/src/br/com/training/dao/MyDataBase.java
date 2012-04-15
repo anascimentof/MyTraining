@@ -6,13 +6,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MyDataBase extends SQLiteOpenHelper {
 	
-	private static final String BANCO				= "MyTraining.db";
-	private static final String TBEQUIPAMENTO 		= "TbEquipamento";
-	private static final String TBMARCAEQUIPAMENTO	= "TbMarcaEquipamento";
-	private static final String TBCATEGORIAMUSCULAR	= "TbCategoriaMuscular";
-	private static final String TBMUSCULOCATEGORIA  = "TbMusculoCategoria";
-	private static final String TBMUSCULO			= "TbMusculo";
-	private static final int	VERSAO 				= 1;
+	public static final String BANCO				= "MyTraining.db";
+	public static final String TBEQUIPAMENTO 		= "TbEquipamento";
+	public static final String TBMARCAEQUIPAMENTO	= "TbMarcaEquipamento";
+	public static final String TBCATEGORIAMUSCULAR	= "TbCategoriaMuscular";
+	public static final String TBMUSCULOCATEGORIA  = "TbMusculoCategoria";
+	public static final String TBMUSCULO			= "TbMusculo";
+	public static final String TBTESTE				= "TbTeste";
+	public static final int	VERSAO 				= 1;
+	
 	private SQLiteDatabase db;
 	
 	public MyDataBase(Context context ) {
@@ -50,6 +52,11 @@ public class MyDataBase extends SQLiteOpenHelper {
 		sb.append(" CONSTRAINT [] PRIMARY KEY ([cdctg], [cdmusculo]) );" );
 		db.execSQL(sb.toString());
 		sb.delete(0, sb.length());
+		sb.append(" CREATE TABLE IF NOT EXISTS " + TBTESTE + " " );
+		sb.append(" ( CdTeste INTEGER PRIMARY KEY AUTOINCREMENT,"); 
+		sb.append(" DsTeste TEXT(30));");
+		db.execSQL(sb.toString());
+		sb.delete(0, sb.length());
 	}
 
 	@Override
@@ -60,6 +67,7 @@ public class MyDataBase extends SQLiteOpenHelper {
 		sb.append("DROP TABLE IF EXISTS " + TBCATEGORIAMUSCULAR + " ;");
 		sb.append("DROP TABLE IF EXISTS " + TBMUSCULO + " ;");
 		sb.append("DROP TABLE IF EXISTS " + TBMUSCULOCATEGORIA + "; ");
+		sb.append("DROP TABLE IF EXISTS " + TBTESTE + ";" );
 		db.execSQL(sb.toString());
 		onCreate(db);
 	}

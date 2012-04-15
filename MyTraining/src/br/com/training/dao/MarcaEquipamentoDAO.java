@@ -117,7 +117,7 @@ public class MarcaEquipamentoDAO extends SQLiteOpenHelper {
 		SQLiteDatabase db = getWritableDatabase();
 		db.beginTransaction();
 		try{
-			db.delete(TABELA, "codigo=?", new String[] { String.valueOf(marcaequipamento.getCodigo()) }  );
+			db.delete(TABELA, "codigo=?", new String[] { marcaequipamento.getCodigoString()}  );
 			db.setTransactionSuccessful();
 		}catch(SQLException e){
 			Log.e("Marca Equipamento", "Erro Deletar: " + e.toString());

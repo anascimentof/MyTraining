@@ -1,68 +1,32 @@
 package br.com.training.entidades;
 
-public class ExMusculacao extends Exercicio {
+public class ExMusculacao {
+	private Exercicio		exercicio;
 	private Equipamento 	equipamento[];
 	private Musculo			musculos[];
 	private SerieExercicio 	serie[];
 	private String 			velocidade;
 	private int 			tempoDescanso;
-	private String 			modoExecução;
+	private String 			modoExecucao; 
 	private String 			tipoPegada;
 	private String 			posicaoBanco;
-	private String 			amplitudade;
+	private String 			amplitude;
 	
-	public ExMusculacao(){
-		super();
-	}
-	
-	public ExMusculacao(int codigo, String descricao, String obs , Equipamento[] equipamento, Musculo[] musculos,
+	public ExMusculacao(Equipamento[] equipamento, Musculo[] musculos,
 			SerieExercicio[] serie, String velocidade, int tempoDescanso,
-			String modoExecução, String tipoPegada, String posicaoBanco,
+			String modoExecucao, String tipoPegada, String posicaoBanco,
 			String amplitudade, String tipoExercicio) {
-		super();
-		setCodigo(codigo);
-		setDescricao(descricao);
-		setObs(obs);
-		setTipoExercicio(tipoExercicio);
 		this.equipamento = equipamento;
 		this.musculos = musculos;
 		this.serie = serie;
 		this.velocidade = velocidade;
 		this.tempoDescanso = tempoDescanso;
-		this.modoExecução = modoExecução;
+		this.modoExecucao = modoExecucao;
 		this.tipoPegada = tipoPegada;
 		this.posicaoBanco = posicaoBanco;
-		this.amplitudade = amplitudade;
+		this.amplitude = amplitudade;
 	}
 
-	public void setCodigo(int codigo){
-		super.setCodigo(codigo);
-	}
-	
-	public int getCodigo(){
-		return super.getCodigo();
-	}
-	
-	public void setDescricao(String descricao){
-		super.setDescricao(descricao);
-	}
-	
-	public void setTipoExercicio(String tipoExercicio){
-		super.setTipoExercicio(tipoExercicio);
-	}
-	
-	public String getDescricao(){
-		return super.getDescricao();
-	}
-	
-	public void setObs(String obs){
-		super.setObs(obs);
-	}
-	
-	public String getObs(){
-		return super.getObs();
-	}
-	
 	public Equipamento[] getEquipamento() {
 		return equipamento;
 	}
@@ -103,12 +67,12 @@ public class ExMusculacao extends Exercicio {
 		this.tempoDescanso = tempoDescanso;
 	}
 
-	public String getModoExecução() {
-		return modoExecução;
+	public String getModoExecucao() {
+		return modoExecucao;
 	}
 
-	public void setModoExecução(String modoExecução) {
-		this.modoExecução = modoExecução;
+	public void setModoExecucao(String modoExecucao) {
+		this.modoExecucao = modoExecucao;
 	}
 
 	public String getTipoPegada() {
@@ -128,11 +92,11 @@ public class ExMusculacao extends Exercicio {
 	}
 
 	public String getAmplitudade() {
-		return amplitudade;
+		return amplitude;
 	}
 
 	public void setAmplitudade(String amplitudade) {
-		this.amplitudade = amplitudade;
+		this.amplitude = amplitudade;
 	}
 	
 }

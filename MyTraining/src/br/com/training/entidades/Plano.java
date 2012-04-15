@@ -1,9 +1,11 @@
 package br.com.training.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Plano {
-
+public class Plano implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	private String codigo;
 	private Treino treinos[];
 	private String nivel;

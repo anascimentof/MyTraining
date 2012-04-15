@@ -1,10 +1,13 @@
 package br.com.training.entidades;
 
+import java.io.Serializable;
 import java.util.Timer;
 
-public class Treino {
-
-	private String codigo;
+public class Treino implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	private String cdPlano;
+	private String cdTreino;
 	private String descricao;
 	private ExMusculacao exMuscular[];
 	private Timer tempoDuracao;
@@ -15,18 +18,18 @@ public class Treino {
 
 	public Treino(String codigo, String descricao, ExMusculacao[] exMuscular,
 			Timer tempoDuracao) {
-		this.codigo = codigo;
+		this.cdTreino = codigo;
 		this.descricao = descricao;
 		this.exMuscular = exMuscular;
 		this.tempoDuracao = tempoDuracao;
 	}
 
 	public String getCodigo() {
-		return codigo;
+		return cdTreino;
 	}
 
 	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+		this.cdTreino = codigo;
 	}
 
 	public String getDescricao() {
@@ -52,5 +55,12 @@ public class Treino {
 	public void setTempoDuracao(Timer tempoDuracao) {
 		this.tempoDuracao = tempoDuracao;
 	}
-	
+
+	public String getCdPlano() {
+		return cdPlano;
+	}
+
+	public void setCdPlano(String cdPlano) {
+		this.cdPlano = cdPlano;
+	}
 }

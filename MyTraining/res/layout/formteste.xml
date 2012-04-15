@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" android:id="@+formteste/formteste">
+
+    <br.com.training.components.ConsistenciaMSG
+        android:id="@+formteste/textoconsistencia"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+formteste/txtDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição do Texto" android:textColor="@color/AMARELO"/>
+	
+	<EditText 
+	    android:id="@+formteste/edtDescricao" 
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" android:maxLines="1" android:maxLength="50"/>
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_gravity="bottom" >
+
+	    <ImageButton
+	        android:id="@+formteste/btnSalvar"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="bottom"
+	        android:layout_weight="1"
+	        android:src="@drawable/salvar" />
+
+	    <ImageButton
+	        android:id="@+formteste/btnVoltar"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="bottom"
+	        android:layout_weight="1"
+	        android:src="@drawable/sair" />
+	</LinearLayout>
+
+</LinearLayout>

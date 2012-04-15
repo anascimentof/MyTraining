@@ -4,6 +4,7 @@ public class SerieExercicio {
 	private ExMusculacao musculacao;
 	private int repeticao;
 	private float peso;
+	private String unidMedida;
 	
 	public SerieExercicio(){
 		super();
@@ -31,6 +32,14 @@ public class SerieExercicio {
 	}
 	public void setPeso(float peso) {
 		this.peso = peso;
+	}
+	
+	public String getUnidMedida() {
+		return unidMedida;
+	}
+
+	public void setUnidMedida(String unidMedida) {
+		this.unidMedida = unidMedida;
 	}
 	
 }
