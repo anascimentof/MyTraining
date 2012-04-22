@@ -1,20 +1,26 @@
 package br.com.training.entidades;
 
 public class SerieExercicio {
-	private Musculacao musculacao;
-	private int repeticao;
-	private float peso;
+	private ExMusculacao	exMusculacao;
+	private int 			repeticao;
+	private float 			peso;
+	private String 			unidadeMedida;
 	
-	public SerieExercicio(Musculacao musculacao, int repeticao, float peso) {
-		this.musculacao = musculacao;
-		this.repeticao = repeticao;
-		this.peso = peso;
+	public SerieExercicio(){
+		super();
 	}
-	public Musculacao getMusculacao() {
-		return musculacao;
+	public SerieExercicio(ExMusculacao exMusculacao, int repeticao, float peso, String unidadeMedida) {
+		super();
+		this.exMusculacao	= exMusculacao;
+		this.repeticao 		= repeticao;
+		this.peso 			= peso;
+		this.unidadeMedida 	= unidadeMedida;
 	}
-	public void setMusculacao(Musculacao musculacao) {
-		this.musculacao = musculacao;
+	public ExMusculacao getMusculacao() {
+		return exMusculacao;
+	}
+	public void setMusculacao(ExMusculacao exMusculacao) {
+		this.exMusculacao = exMusculacao;
 	}
 	public int getRepeticao() {
 		return repeticao;
@@ -27,6 +33,12 @@ public class SerieExercicio {
 	}
 	public void setPeso(float peso) {
 		this.peso = peso;
+	}
+	public String gertunidadeMedida(){
+		return this.unidadeMedida;
+	}
+	public void setunidadeMedida(String unidadeMedida){
+		this.unidadeMedida = unidadeMedida;
 	}
 	
 }

@@ -19,7 +19,7 @@ public class MyDataBase extends SQLiteOpenHelper {
 	public static final String TBGRUPOXEXERCICIO 	= "TbGrupoXExercicio";
 	public static final String TBEXERCICIO			= "TbExercicio";
 	public static final String TBEXMUSCULACAO		= "TbExMusculacao";
-	public static final String	TBEQXEXERCICIO		= "TbEqXExercicio";
+	public static final String TBEQXEXERCICIO		= "TbEqXExercicio";
 	public static final String TBMUSCXEXERCICIO		= "TbMuscXExercicio";
 	public static final String TBSERIE				= "TbSerie";
 	public static final String TBTREINO				= "TbTreino";
@@ -80,12 +80,12 @@ public class MyDataBase extends SQLiteOpenHelper {
 		sb.append("CREATE TABLE IF NOT EXISTS " + TBEXMUSCULACAO + " ");
 		sb.append(" ( codigo integer PRIMARY KEY AUTOINCREMENT, ");
 		sb.append(" cdExercicio integer ,");
-		sb.append(" velocidade text(30),"  );
+		sb.append(" velocidade text(1),"  );
 		sb.append(" tempoDescanso time,");
-		sb.append(" modoExecucao text(30),");
-		sb.append(" tipoPegada text(20),");
-		sb.append(" posicaoBanco text(30),");
-		sb.append(" amplitude text(30),");
+		sb.append(" modoExecucao text(1),");
+		sb.append(" tipoPegada text(1),");
+		sb.append(" posicaoBanco text(1),");
+		sb.append(" amplitude text(1),");
 		sb.append(" obs text(50) );");
 		db.execSQL(sb.toString());
 		sb.delete(0, sb.length());
@@ -115,7 +115,7 @@ public class MyDataBase extends SQLiteOpenHelper {
 		sb.append("cdTreino integer, ");
 		sb.append("cdExMusculacao integer,");
 		sb.append("sequencial integer,");
-		sb.append("statusEx text(30),");
+		sb.append("statusEx text(1),");
 		sb.append("avaliacao integer,");
 		sb.append("comentario text(50) );");
 		db.execSQL(sb.toString());

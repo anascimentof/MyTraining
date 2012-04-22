@@ -1,40 +1,45 @@
 package br.com.training.entidades;
 
+import java.util.List;
+
 public class Exercicio {
 	private int codigo;
 	private String descricao;
-	private String obs;
-	private String tipoExercicio;
+	private List<GrupoExercicio> grupoxExercicio;
 	
-	protected Exercicio(){
-		
-	}
-	
-	protected int getCodigo() {
-		return codigo;
-	}
-	protected void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
-	protected String getDescricao() {
-		return descricao;
-	}
-	protected void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	protected String getObs() {
-		return obs;
-	}
-	protected void setObs(String obs) {
-		this.obs = obs;
-	}
-	
-	protected String getTipoExercicio() {
-		return tipoExercicio;
+	public Exercicio(){
+		super();
 	}
 
-	protected void setTipoExercicio(String tipoExercicio) {
-		this.tipoExercicio = tipoExercicio;
+	public Exercicio(int codigo, String descricao,
+			List<GrupoExercicio> grupoxExercicio) {
+		super();
+		this.codigo = codigo;
+		this.descricao = descricao;
+		this.grupoxExercicio = grupoxExercicio;
+	}
+
+	public int getCodigo() {
+		return codigo;
 	}
 	
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public List<GrupoExercicio> getGrupoxExercicio() {
+		return grupoxExercicio;
+	}
+
+	public void setGrupoxExercicio(List<GrupoExercicio> grupoxExercicio) {
+		this.grupoxExercicio = grupoxExercicio;
+	}
 }

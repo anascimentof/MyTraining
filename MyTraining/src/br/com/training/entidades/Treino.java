@@ -6,14 +6,14 @@ public class Treino {
 
 	private String codigo;
 	private String descricao;
-	private Musculacao exMuscular[];
+	private ExMusculacao exMuscular[];
 	private Time tempoDuracao;
 
 	public Treino(){
 		
 	}
 
-	public Treino(String codigo, String descricao, Musculacao[] exMuscular,
+	public Treino(String codigo, String descricao, ExMusculacao[] exMuscular,
 			Time tempoDuracao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
@@ -37,11 +37,11 @@ public class Treino {
 		this.descricao = descricao;
 	}
 
-	public Musculacao[] getExMuscular() {
+	public ExMusculacao[] getExMuscular() {
 		return exMuscular;
 	}
 
-	public void setExMuscular(Musculacao[] exMuscular) {
+	public void setExMuscular(ExMusculacao[] exMuscular) {
 		this.exMuscular = exMuscular;
 	}
 
