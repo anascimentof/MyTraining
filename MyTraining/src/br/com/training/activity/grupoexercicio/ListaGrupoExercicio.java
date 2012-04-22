@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import br.com.training.activity.R;
 import br.com.training.dao.GrupoExercicioDAO;
 import br.com.training.entidades.GrupoExercicio;
@@ -43,9 +44,14 @@ public class ListaGrupoExercicio extends ListActivity {
 	@Override
 	public void onResume() {
 		super.onResume();
+		listar();
+	}
+	
+	public void listar(){
 		setListAdapter(new ArrayAdapter<GrupoExercicio>(ListaGrupoExercicio.this, 
-														android.R.layout.simple_list_item_1,
-														grupoDAO.listar()));		
+				android.R.layout.simple_list_item_1,
+				grupoDAO.listar()));		
+		if(getListAdapter().isEmpty()) Toast.makeText(ListaGrupoExercicio.this, "Lista Vazia", Toast.LENGTH_LONG).show();
 	}
 
 	@Override
@@ -99,9 +105,7 @@ public class ListaGrupoExercicio extends ListActivity {
 			.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					grupoDAO.excluir(grupoSelecionado);
-					setListAdapter( new ArrayAdapter<GrupoExercicio>(ListaGrupoExercicio.this, 
-																	android.R.layout.simple_list_item_1, 
-																	grupoDAO.listar()));
+					listar();
 				}
 			})
 			.setNegativeButton("Não", null);

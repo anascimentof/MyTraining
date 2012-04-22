@@ -1,7 +1,5 @@
 package br.com.training.activity.marcaequipamento;
 
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -22,15 +20,14 @@ import br.com.training.dao.MarcaEquipamentoDAO;
 import br.com.training.entidades.MarcaEquipamento;
 
 public class ListaMarcaEquipamento extends ListActivity {
-	public static final int NOVO = 0;
-	public static final int VOLTAR = 1;
+	public static final int NOVO 	= 0;
+	public static final int VOLTAR 	= 1;
 	
 	public static final int ALTERAR = 0;
 	public static final int DELETAR = 1;
 	
 	public MarcaEquipamento marcaSelecionada;
-	public MarcaEquipamentoDAO eqDAO;
-	public List<MarcaEquipamento> lista;	
+	public MarcaEquipamentoDAO eqDAO = new MarcaEquipamentoDAO(ListaMarcaEquipamento.this);
 	
 	@Override
 	public void onCreate(Bundle icicle){
@@ -50,12 +47,10 @@ public class ListaMarcaEquipamento extends ListActivity {
 	}
 	
 	private void listarMarcaEquipamento(){
-		MarcaEquipamentoDAO marcaequipamentodao = new MarcaEquipamentoDAO(ListaMarcaEquipamento.this);
-		lista = marcaequipamentodao.listar();
 		setListAdapter(new ArrayAdapter<MarcaEquipamento>(ListaMarcaEquipamento.this , 
 														android.R.layout.simple_list_item_1 , 
-														lista));
-		if (lista.isEmpty()) Toast.makeText(this, "Lista vazia", Toast.LENGTH_LONG).show();
+														eqDAO.listar() ));
+		if (getListAdapter().isEmpty()) Toast.makeText(this, "Lista vazia", Toast.LENGTH_LONG).show();
 	}
 
 	// Clique nas opções
@@ -108,7 +103,6 @@ public class ListaMarcaEquipamento extends ListActivity {
 			.setCancelable(false)
 			.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					eqDAO = new MarcaEquipamentoDAO(ListaMarcaEquipamento.this);
 					eqDAO.deletar(marcaSelecionada);
 					listarMarcaEquipamento();					
 				}

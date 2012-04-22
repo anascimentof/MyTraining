@@ -73,6 +73,7 @@ public class EquipamentoDAO extends SQLiteOpenHelper {
 		Cursor 			cursor	= null;
 		try{			
 			db = getReadableDatabase();
+			listaEquipamento.clear();
 			cursor = db.rawQuery( "select a.codigo , a.descricao , b.codigo , b.descricao from TbEquipamento a " +
 								  "inner join TbMarcaEquipamento b on " +
 								  "a.cdMarca = b.codigo", null);

@@ -1,7 +1,5 @@
 package br.com.training.activity.equipamento;
 
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -29,8 +27,7 @@ public class ListaEquipamento extends ListActivity{
 	private static final int DELETAR = 1;
 	
 	private Equipamento eqSelecionado;
-	private EquipamentoDAO eqDAO;
-	private List<Equipamento> lista;
+	private EquipamentoDAO eqDAO = new EquipamentoDAO(ListaEquipamento.this);
 	
 	@Override
 	public void onCreate(Bundle icicle){
@@ -56,16 +53,10 @@ public class ListaEquipamento extends ListActivity{
 	}
 	
 	private void listarEquipamentos(){
-		
-		EquipamentoDAO equipamentodao = new EquipamentoDAO(ListaEquipamento.this);
-		
-		lista = equipamentodao.listar();
-		
 		setListAdapter(new ArrayAdapter<Equipamento>(ListaEquipamento.this , 
 														android.R.layout.simple_list_item_1 , 
-														lista));
-		
-		if(lista.isEmpty()) Toast.makeText(this, "Lista vazia", Toast.LENGTH_LONG).show();
+														eqDAO.listar()));
+		if(getListAdapter().isEmpty()) Toast.makeText(this, "Lista vazia", Toast.LENGTH_LONG).show();
 	}
 		
 	// Clique nas opções
@@ -119,7 +110,6 @@ public class ListaEquipamento extends ListActivity{
 			.setCancelable(false)
 			.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					eqDAO = new EquipamentoDAO(ListaEquipamento.this);
 					eqDAO.deletar(eqSelecionado);
 					listarEquipamentos();					
 				}

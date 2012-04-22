@@ -66,6 +66,7 @@ public class MarcaEquipamentoDAO extends SQLiteOpenHelper {
 		Cursor 			cursor = null;
 		try{			
 			db = getReadableDatabase();
+			listaMarcaEquipamento.clear();
 			cursor = db.query(MyDataBase.TBMARCAEQUIPAMENTO, COLS, null, null, null, null, null);
 			while (cursor.moveToNext()) {
 				MarcaEquipamento marcaequipamento = new MarcaEquipamento();

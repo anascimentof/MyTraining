@@ -110,6 +110,7 @@ public class MusculoDAO extends SQLiteOpenHelper {
 		Cursor 			cursor	= null;
 		try {
 			db = getReadableDatabase();
+			listaMusculo.clear();
 			cursor = db.query(TBMUSCULO, COLS, null, null, null, null, null);
 			while (cursor.moveToNext()) {
 				Musculo musculo = new Musculo();
@@ -133,6 +134,7 @@ public class MusculoDAO extends SQLiteOpenHelper {
 		
 		try {
 			db		= getReadableDatabase();
+			listaMusculo.clear();
 			cursor	= db.rawQuery("select a.codigo, a.descricao , c.codigo, c.descricao from " + TBMUSCULO + " a inner join " +
 								  TBMUSCULOCATEGORIA + " b on a.codigo = b.cdmusculo inner join " + TBCATEGORIAMUSCULAR + " c on " +
 								  "b.cdctg = c.codigo order by a.codigo ", null);

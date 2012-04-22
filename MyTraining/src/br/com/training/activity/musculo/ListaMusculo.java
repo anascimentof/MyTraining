@@ -30,8 +30,7 @@ public class ListaMusculo extends ListActivity {
 	private static final int	DELETAR = 1;
 	
 	private Musculo 			musculoSelecionado;
-	private MusculoDAO			musculoDAO;
-	private List<Musculo>		listaMusculo;
+	private MusculoDAO			musculoDAO = new MusculoDAO(ListaMusculo.this);
 	
 	@Override
 	public void onCreate(Bundle icicle){
@@ -53,12 +52,10 @@ public class ListaMusculo extends ListActivity {
 	}
 	
 	public void listarMusculos(){
-		MusculoDAO musculoDAO	= new MusculoDAO(this);
-		listaMusculo 			= musculoDAO.listarMusculoCategoria();
 		setListAdapter(new ArrayAdapter<Musculo>(this, 
 												R.layout.simple_list_item_1, 
-												listaMusculo));
-		if(listaMusculo.isEmpty()) Toast.makeText(this, "Lista vazia.", Toast.LENGTH_LONG).show();
+												musculoDAO.listar()));
+		if(getListAdapter().isEmpty()) Toast.makeText(this, "Lista vazia.", Toast.LENGTH_LONG).show();
 	}
 	
 	public void onListItemClick(ListView l, View v, int position, long id){
@@ -106,7 +103,6 @@ public class ListaMusculo extends ListActivity {
 			.setCancelable(false)
 			.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface arg0, int arg1) {
-					musculoDAO = new MusculoDAO(ListaMusculo.this);
 					musculoDAO.deletar(musculoSelecionado);
 					listarMusculos();
 				}

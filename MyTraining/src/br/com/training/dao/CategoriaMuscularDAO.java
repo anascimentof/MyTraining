@@ -72,6 +72,7 @@ public class CategoriaMuscularDAO extends SQLiteOpenHelper {
 		Cursor 			cursor	= null;
 		try{
 			db	=	getReadableDatabase();
+			listaCategMuscular.clear();
 			cursor = db.query(TABELA, COLS, null, null, null, null, null);
 			while (cursor.moveToNext()) {
 				CategoriaMuscular ctm = new CategoriaMuscular();

@@ -1,8 +1,5 @@
 package br.com.training.activity.categoriamuscular;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -23,7 +20,6 @@ import br.com.training.dao.CategoriaMuscularDAO;
 import br.com.training.entidades.CategoriaMuscular;
 
 public class ListaCategoriaMuscular extends ListActivity {
-	private List<CategoriaMuscular> listaCtm	= new ArrayList<CategoriaMuscular>();
 	private static final int NOVO				= 0;
 	private static final int VOLTAR				= 1;
 	private static final int ALTERAR			= 0;
@@ -46,10 +42,14 @@ public class ListaCategoriaMuscular extends ListActivity {
 
 	public void onResume(){
 		super.onResume();
+		listarCtg();
+	}
+	
+	public void listarCtg(){
 		setListAdapter(new ArrayAdapter<CategoriaMuscular>( ListaCategoriaMuscular.this, 
 				android.R.layout.simple_list_item_1 ,
 				ctmDAO.listar()));
-		if(listaCtm.isEmpty()) Toast.makeText(this, "Lista vazia", Toast.LENGTH_LONG).show();
+		if( getListAdapter().isEmpty() ) Toast.makeText(this, "Lista vazia", Toast.LENGTH_LONG).show();
 	}
 	
 	public void onListItemClick(ListView l, View v, int position, long id){
@@ -98,9 +98,7 @@ public class ListaCategoriaMuscular extends ListActivity {
 			.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					ctmDAO.deletar(ctgSelecionada);
-					setListAdapter(new ArrayAdapter<CategoriaMuscular>( ListaCategoriaMuscular.this, 
-							android.R.layout.simple_list_item_1 ,
-							ctmDAO.listar()));
+					listarCtg();	
 				}
 			})
 			.setNegativeButton("Não", null);
