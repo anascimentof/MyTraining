@@ -28,6 +28,7 @@ public class ListaCategoriaMuscular extends ListActivity {
 	private static final int VOLTAR				= 1;
 	private static final int ALTERAR			= 0;
 	private static final int DELETAR			= 1;	
+	private CategoriaMuscularDAO ctmDAO 		= new CategoriaMuscularDAO(ListaCategoriaMuscular.this);
 	private CategoriaMuscular ctgSelecionada;
 	
 	public void onCreate(Bundle icicle){
@@ -45,15 +46,9 @@ public class ListaCategoriaMuscular extends ListActivity {
 
 	public void onResume(){
 		super.onResume();
-		listarCategoriaMusculuar();
-	}
-	
-	public void listarCategoriaMusculuar(){
-		CategoriaMuscularDAO ctmDAO = new CategoriaMuscularDAO(ListaCategoriaMuscular.this);
-		listaCtm = ctmDAO.listar();
 		setListAdapter(new ArrayAdapter<CategoriaMuscular>( ListaCategoriaMuscular.this, 
-															android.R.layout.simple_list_item_1 ,
-															listaCtm));
+				android.R.layout.simple_list_item_1 ,
+				ctmDAO.listar()));
 		if(listaCtm.isEmpty()) Toast.makeText(this, "Lista vazia", Toast.LENGTH_LONG).show();
 	}
 	
@@ -102,9 +97,10 @@ public class ListaCategoriaMuscular extends ListActivity {
 			.setCancelable(false)
 			.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					CategoriaMuscularDAO ctmDAO = new CategoriaMuscularDAO(ListaCategoriaMuscular.this);
 					ctmDAO.deletar(ctgSelecionada);
-					listarCategoriaMusculuar();
+					setListAdapter(new ArrayAdapter<CategoriaMuscular>( ListaCategoriaMuscular.this, 
+							android.R.layout.simple_list_item_1 ,
+							ctmDAO.listar()));
 				}
 			})
 			.setNegativeButton("Não", null);

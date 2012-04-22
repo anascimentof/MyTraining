@@ -22,6 +22,8 @@
         <activity android:name=".categoriamuscular.ListaCategoriaMuscular" android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Categoria Muscular"></activity><activity android:name=".categoriamuscular.FormCategoriaMuscular" android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Categoria Muscular"></activity>
         <activity android:enabled="true" android:name=".musculo.FormMusculo" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Músculo"></activity>
         <activity android:name=".musculo.ListaMusculo" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Músculo"></activity>
+        <activity android:name=".grupoexercicio.ListaGrupoExercicio" android:enabled="true" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Grupo de Exercicio"></activity>
+        <activity android:name=".grupoexercicio.FormGrupoExercicio" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Grupo Exercicio" android:enabled="true"></activity>
        
 
     </application>
