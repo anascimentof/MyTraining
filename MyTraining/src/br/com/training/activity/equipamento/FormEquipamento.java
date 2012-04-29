@@ -92,7 +92,7 @@ public class FormEquipamento extends Activity {
 	private boolean validar(){
 		textoConsistencia.setText("");
 		if (telaDescricao.getText().toString().trim().equals("") ){
-			textoConsistencia.mensagem("Campo descrição não pode ser vazio." , ConsistenciaMSG.ERRO);
+			textoConsistencia.mensagem( getString(R.string.msg_Campo_Descricao_em_branco) , ConsistenciaMSG.ERRO);
 			return false ;
 		}
 		if (meSelecionado==null){

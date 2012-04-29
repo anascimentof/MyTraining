@@ -62,7 +62,6 @@ public class GrupoExercicioDAO extends SQLiteOpenHelper {
 		Cursor 			cursor 	= null; 
 		
 		try {
-			if (db 		!= null) db.close();	
 			db 		= getReadableDatabase();
 			listaGrupoExercicio.clear();
 			cursor 	= db.query(MyDataBase.TBGRUPOEXERCIO, COLS, null, null, null, null, null);

@@ -61,7 +61,7 @@ public class FormCategoriaMuscular extends Activity{
 	// ROTINA DE VALIDAÇÃO DOS CAMPOS DO FORM	
 	public boolean validar(){
 		if (telaDescricao.getText().toString().trim().equals("")){
-			textoConsistencia.mensagem("Campo descrição não pode ser vazio.", ConsistenciaMSG.ERRO);
+			textoConsistencia.mensagem( getString(R.string.msg_Campo_Descricao_em_branco) , ConsistenciaMSG.ERRO);
 			return false;
 		}
 		return true;

@@ -55,7 +55,7 @@ public class FormMarcaEquipamento extends Activity {
 	//METODO DE VALIDAR OS CAMPOS DO FORM
 	private boolean validar(){
 		if (telaDescricao.getText().toString().trim().equals("") ){
-			Toast.makeText(FormMarcaEquipamento.this, "Campo Descrição não pode ser vazio.", Toast.LENGTH_LONG).show();
+			Toast.makeText(FormMarcaEquipamento.this,  getString(R.string.msg_Campo_Descricao_em_branco), Toast.LENGTH_LONG).show();
 			telaDescricao.setFocusable(true);
 			return false ;
 		}

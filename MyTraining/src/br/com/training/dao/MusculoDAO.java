@@ -15,11 +15,7 @@ import br.com.training.entidades.CategoriaMuscular;
 import br.com.training.entidades.Musculo;
 
 public class MusculoDAO extends SQLiteOpenHelper {
-	private static final String		BANCO				= "MyTraining.db";
-	private static final int		VERSAO				= 1;
-	private static final String		TBMUSCULO			= "TbMusculo";
-	private static final String 	TBMUSCULOCATEGORIA 	= "TbMusculoCategoria";
-	private static final String		TBCATEGORIAMUSCULAR	= "TbCategoriaMuscular";
+	
 	private List<Musculo>			listaMusculo		= new ArrayList<Musculo>();
 	private static final int		CODIGOMUSCULO		= 0;
 	private static final int		DESCRICAOMUSCULO	= 1;
@@ -28,7 +24,7 @@ public class MusculoDAO extends SQLiteOpenHelper {
 	private static final String[]	COLS				= {"codigo", "descricao"};
 	
 	public MusculoDAO(Context context) {
-		super(context, BANCO, null, VERSAO);
+		super(context, MyDataBase.BANCO, null, MyDataBase.VERSAO);
 	}
 
 	@Override
@@ -50,24 +46,24 @@ public class MusculoDAO extends SQLiteOpenHelper {
 			dados = obterContentValuesMusculo(musculo);
 			if(id!=0){
 				// Atualiza a descrição do musculo na tabela TBMUSCULO
-				db.update(TBMUSCULO, dados, "codigo=?", new String[]{ musculo.getCodigoString() } );
+				db.update(MyDataBase.TBMUSCULO, dados, "codigo=?", new String[]{ musculo.getCodigoString() } );
 				dados.clear();
 				// Deleta todas as referências entre musculo e as categorias gravadas
-				db.delete(TBMUSCULOCATEGORIA, "cdmusculo=?", new String[]{ musculo.getCodigoString() } );
+				db.delete(MyDataBase.TBMUSCULOCATEGORIA, "cdmusculo=?", new String[]{ musculo.getCodigoString() } );
 				// Carrega cada categoria selecionada do musculo para inserir na tabela TBMUSCULOCATEGORIA
 				Iterator<CategoriaMuscular> i = musculo.getCategMuscular().iterator();
 				while(i.hasNext()){
 					CategoriaMuscular categoria = (CategoriaMuscular) i.next();
 					dados.putAll( obterContentValuesMusculoCategoria(musculo.getCodigo(), categoria.getCodigo()) );
-					db.insert(TBMUSCULOCATEGORIA, null, dados);
+					db.insert(MyDataBase.TBMUSCULOCATEGORIA, null, dados);
 				}
 				db.setTransactionSuccessful();
 			}else{
 				// Inserir registro na tabela Musculo 
-				db.insert(TBMUSCULO, null, dados);
+				db.insert(MyDataBase.TBMUSCULO, null, dados);
 				dados.clear();
 				// Retornar o último codigo do musculo para passar para o obterContentValuesMusculoCategoria
-				c = db.rawQuery("Select codigo From " + TBMUSCULO + " Order By codigo Desc Limit 1", null);
+				c = db.rawQuery("Select codigo From " + MyDataBase.TBMUSCULO + " Order By codigo Desc Limit 1", null);
 				if (c != null && c.moveToFirst() ){
 					codigoMusculo = c.getInt(CODIGOMUSCULO);
 				}
@@ -76,7 +72,7 @@ public class MusculoDAO extends SQLiteOpenHelper {
 				while (i.hasNext()) {
 					CategoriaMuscular categoria = (CategoriaMuscular) i.next();
 					dados.putAll( obterContentValuesMusculoCategoria( codigoMusculo , categoria.getCodigo()) );
-					db.insert(TBMUSCULOCATEGORIA, null, dados);					
+					db.insert(MyDataBase.TBMUSCULOCATEGORIA, null, dados);					
 				}
 				
 				db.setTransactionSuccessful();
@@ -94,8 +90,8 @@ public class MusculoDAO extends SQLiteOpenHelper {
 		SQLiteDatabase db = getWritableDatabase();
 		try {
 			db.beginTransaction();
-			db.delete(TBMUSCULO, "codigo=?", new String[] { musculo.getCodigoString() } );
-			db.delete(TBMUSCULOCATEGORIA, "cdmusculo=?", new String[]{musculo.getCodigoString()});
+			db.delete(MyDataBase.TBMUSCULO, "codigo=?", new String[] { musculo.getCodigoString() } );
+			db.delete(MyDataBase.TBMUSCULOCATEGORIA, "cdmusculo=?", new String[]{musculo.getCodigoString()});
 			db.setTransactionSuccessful();
 		} catch (SQLException e) {
 			Log.e("Musculo", "Erro deletar: " + e.toString());
@@ -111,7 +107,7 @@ public class MusculoDAO extends SQLiteOpenHelper {
 		try {
 			db = getReadableDatabase();
 			listaMusculo.clear();
-			cursor = db.query(TBMUSCULO, COLS, null, null, null, null, null);
+			cursor = db.query(MyDataBase.TBMUSCULO, COLS, null, null, null, null, null);
 			while (cursor.moveToNext()) {
 				Musculo musculo = new Musculo();
 				musculo.setCodigo(cursor.getInt(CODIGOMUSCULO));
@@ -135,9 +131,9 @@ public class MusculoDAO extends SQLiteOpenHelper {
 		try {
 			db		= getReadableDatabase();
 			listaMusculo.clear();
-			cursor	= db.rawQuery("select a.codigo, a.descricao , c.codigo, c.descricao from " + TBMUSCULO + " a inner join " +
-								  TBMUSCULOCATEGORIA + " b on a.codigo = b.cdmusculo inner join " + TBCATEGORIAMUSCULAR + " c on " +
-								  "b.cdctg = c.codigo order by a.codigo ", null);
+			cursor	= db.rawQuery("select a.codigo, a.descricao , c.codigo, c.descricao from " + MyDataBase.TBMUSCULO + " a inner join " +
+					MyDataBase.TBMUSCULOCATEGORIA + " b on a.codigo = b.cdmusculo inner join " + MyDataBase.TBCATEGORIAMUSCULAR + " c on " +
+					"b.cdctg = c.codigo order by a.codigo ", null);
 			int codigoAux = 0;
 			while(cursor.moveToNext()){
 				

@@ -1,4 +1,4 @@
-package br.com.training.activity.execicio;
+package br.com.training.activity.exercicio;
 
 import android.app.Activity;
 

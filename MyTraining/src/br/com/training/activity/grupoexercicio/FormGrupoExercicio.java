@@ -44,7 +44,7 @@ public class FormGrupoExercicio extends Activity {
 					grupoExercicioDAO.salvar(grupoexercicio);
 					edtdescricao.setText("");
 					edtdescricao.setFocusable(true);
-					Toast.makeText(FormGrupoExercicio.this, R.string.msg_Grupo_Exercicio_salvo_com_sucesso , Toast.LENGTH_LONG).show();
+					Toast.makeText(FormGrupoExercicio.this, getString(R.string.msg_Grupo_Exercicio_salvo_com_sucesso) , Toast.LENGTH_LONG).show();
 				}
 			}
 		});
@@ -59,7 +59,7 @@ public class FormGrupoExercicio extends Activity {
 
 	private boolean validar(){
 		if(edtdescricao.getText().toString().trim().equals("")){
-			consistencia.mensagem("Campo descrição em branco.", ConsistenciaMSG.ERRO);
+			consistencia.mensagem( getString(R.string.msg_Campo_Descricao_em_branco), ConsistenciaMSG.ERRO);
 			return false;
 		}
 		return true;

@@ -3,6 +3,6 @@
     <string name="hello">Hello World, Menu!</string>
     <string name="app_name">MyTraining</string>
     <string name="desc_grupo_exercicio">Descrição do Grupo de Exercício</string>
-    <string name="msg_Campo_Descricao_em_branco">Campo descrição em branco</string>
+    <string name="msg_Campo_Descricao_em_branco">Informe o campo descrição</string>
     <string name="msg_Grupo_Exercicio_salvo_com_sucesso">Grupo de Exercício salvo com sucesso.</string>
 </resources>

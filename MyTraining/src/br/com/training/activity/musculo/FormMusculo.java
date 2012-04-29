@@ -72,7 +72,7 @@ public class FormMusculo extends Activity {
 
 	public boolean validar(){
 		if(edtDescricao.getText().toString().trim().equals("")){
-			txtConsistencia.mensagem("Campo descrição não pode ser vazio", ConsistenciaMSG.ERRO);
+			txtConsistencia.mensagem( getString(R.string.msg_Campo_Descricao_em_branco), ConsistenciaMSG.ERRO);
 			return false;
 		}
 		if(musculo.getCategMuscular().isEmpty()){

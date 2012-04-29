@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import br.com.training.activity.categoriamuscular.ListaCategoriaMuscular;
 import br.com.training.activity.equipamento.ListaEquipamento;
-import br.com.training.activity.execicio.ListaExercicio;
+import br.com.training.activity.exercicio.ListaExercicio;
 import br.com.training.activity.grupoexercicio.ListaGrupoExercicio;
 import br.com.training.activity.marcaequipamento.ListaMarcaEquipamento;
 import br.com.training.activity.musculo.ListaMusculo;
