@@ -19,7 +19,7 @@ public class MenuManutencao extends ListActivity {
 											 "Músculo",
 											 "Equipamento" , 
 											 "Marca Equipamento",
-											 "GrupoExercio",
+											 "Grupo Exercício",
 											 "Exercio",
 											 "Voltar"};	
 	

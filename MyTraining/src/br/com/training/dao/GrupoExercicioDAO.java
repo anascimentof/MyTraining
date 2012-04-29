@@ -41,8 +41,12 @@ public class GrupoExercicioDAO extends SQLiteOpenHelper {
 			}else{
 				db.insert(MyDataBase.TBGRUPOEXERCIO, null, dados);
 			}
+			db.setTransactionSuccessful();
 		} catch (SQLException e) {
 			Log.e("Erro ao inserir TBGRUPOEXERCICIO", e.toString());
+		}finally{
+			db.endTransaction();
+			if(db!=null) db.close();
 		}
 	}
 	
@@ -58,6 +62,7 @@ public class GrupoExercicioDAO extends SQLiteOpenHelper {
 		Cursor 			cursor 	= null; 
 		
 		try {
+			if (db 		!= null) db.close();	
 			db 		= getReadableDatabase();
 			listaGrupoExercicio.clear();
 			cursor 	= db.query(MyDataBase.TBGRUPOEXERCIO, COLS, null, null, null, null, null);
@@ -69,7 +74,6 @@ public class GrupoExercicioDAO extends SQLiteOpenHelper {
 			}
 		} catch (SQLException e) {
 			Log.e("Erro no metodo litar", e.toString());
-			return null;
 		}finally{
 			if (cursor  != null) cursor.close();
 			if (db 		!= null) db.close();	

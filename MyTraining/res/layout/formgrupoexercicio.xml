@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <br.com.training.components.ConsistenciaMSG
+        android:id="@+formgrupoexercicio/consistenciaMSG1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+formgrupoexercicio/txtdescricao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/desc_grupo_exercicio" android:lines="1" android:maxLength="50" android:textColor="@color/AMARELO"/>
+
+    <EditText
+        android:id="@+formgrupoexercicio/edtdescricao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text" android:lines="1" android:maxLength="50">
+
+        <requestFocus />
+    </EditText>
+
+<LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:layout_height="fill_parent" android:layout_gravity="bottom">
+<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@+formgrupoexercicio/btnsalvar" android:layout_weight="1" android:src="@drawable/salvar"></ImageButton>
+<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@+formgrupoexercicio/btnvoltar" android:layout_weight="1" android:src="@drawable/cancelar"></ImageButton>
+</LinearLayout>
+    
+</LinearLayout>

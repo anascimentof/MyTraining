@@ -48,10 +48,11 @@ public class ListaGrupoExercicio extends ListActivity {
 	}
 	
 	public void listar(){
-		setListAdapter(new ArrayAdapter<GrupoExercicio>(ListaGrupoExercicio.this, 
+		setListAdapter(new ArrayAdapter<GrupoExercicio>(
+				ListaGrupoExercicio.this, 
 				android.R.layout.simple_list_item_1,
 				grupoDAO.listar()));		
-		if(getListAdapter().isEmpty()) Toast.makeText(ListaGrupoExercicio.this, "Lista Vazia", Toast.LENGTH_LONG).show();
+		if(getListAdapter().isEmpty()) Toast.makeText(this, "Lista Vazia", Toast.LENGTH_LONG).show();
 	}
 
 	@Override
