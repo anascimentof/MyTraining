@@ -25,7 +25,8 @@ public class FormMusculo extends Activity {
 	private EditText					edtDescricao;
 	private ConsistenciaMSG				txtConsistencia;
 	private ListView 					lstSelecaoCategorias;
-	private List<CategoriaMuscular>		listaCategoriaMuscular = new ArrayList<CategoriaMuscular>();;
+	private List<CategoriaMuscular>		listaCategoriaMuscular = new ArrayList<CategoriaMuscular>();
+	private MusculoDAO					musculoDAO = new MusculoDAO(FormMusculo.this);
 			
 	@Override
 	public void onCreate(Bundle icicle){
@@ -51,7 +52,7 @@ public class FormMusculo extends Activity {
 				carregarItensSelecionados();
 				if(validar()){
 					musculo.setDescricao(edtDescricao.getText().toString().trim());
-					MusculoDAO musculoDAO = new MusculoDAO(FormMusculo.this);
+					musculoDAO = new MusculoDAO(FormMusculo.this);
 					musculoDAO.salvar(musculo);
 					edtDescricao.setText("");
 					edtDescricao.setFocusable(true);
@@ -106,7 +107,7 @@ public class FormMusculo extends Activity {
 			while ( i.hasNext() ) {
 				CategoriaMuscular categoria  = (CategoriaMuscular) i.next();
 				for (int j = 0; j < count; j++) {
-					CategoriaMuscular listaCategoria = (CategoriaMuscular) lstSelecaoCategorias.getAdapter().getItem(j);
+					CategoriaMuscular listaCategoria = (CategoriaMuscular) lstSelecaoCategorias.getAdapter().getItem(j) ;
 					if(categoria.getCodigo() == listaCategoria.getCodigo()){
 						lstSelecaoCategorias.setItemChecked(j, true);
 						break;

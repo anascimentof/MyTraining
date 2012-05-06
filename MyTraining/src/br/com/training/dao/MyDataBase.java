@@ -73,8 +73,8 @@ public class MyDataBase extends SQLiteOpenHelper {
 		sb.delete(0, sb.length());		
 		sb.append("CREATE TABLE IF NOT EXISTS " + TBGRUPOXEXERCICIO + " ");
 		sb.append(" (cdGrupo integer, ");
-		sb.append(" cdExericio integer , " );
-		sb.append(" CONSTRAINT [] PRIMARY KEY ([cdGrupo], [cdExericio]) );" );
+		sb.append(" cdExercicio integer , " );
+		sb.append(" CONSTRAINT [] PRIMARY KEY ([cdGrupo], [cdExercicio]) );" );
 		db.execSQL(sb.toString());
 		sb.delete(0, sb.length());		
 		sb.append("CREATE TABLE IF NOT EXISTS " + TBEXMUSCULACAO + " ");

@@ -35,16 +35,16 @@ public class MusculoDAO extends SQLiteOpenHelper {
 	
 	// METODO DE SALVAR ( INCLUIR / ALTERAR ) NA BASE
 	public void salvar(Musculo musculo){
-		ContentValues	dados;
+		ContentValues	dados			= null;
 		Cursor			c 				= null;
-		int				id 				= musculo.getCodigo();
 		SQLiteDatabase	db 				= getWritableDatabase();
 		int 			codigoMusculo	= 0;
 		
 		try {
 			db.beginTransaction();
 			dados = obterContentValuesMusculo(musculo);
-			if(id!=0){
+			
+			if( musculo.getCodigo() != 0){
 				// Atualiza a descrição do musculo na tabela TBMUSCULO
 				db.update(MyDataBase.TBMUSCULO, dados, "codigo=?", new String[]{ musculo.getCodigoString() } );
 				dados.clear();
@@ -57,8 +57,9 @@ public class MusculoDAO extends SQLiteOpenHelper {
 					dados.putAll( obterContentValuesMusculoCategoria(musculo.getCodigo(), categoria.getCodigo()) );
 					db.insert(MyDataBase.TBMUSCULOCATEGORIA, null, dados);
 				}
-				db.setTransactionSuccessful();
+
 			}else{
+				
 				// Inserir registro na tabela Musculo 
 				db.insert(MyDataBase.TBMUSCULO, null, dados);
 				dados.clear();
@@ -75,13 +76,15 @@ public class MusculoDAO extends SQLiteOpenHelper {
 					db.insert(MyDataBase.TBMUSCULOCATEGORIA, null, dados);					
 				}
 				
-				db.setTransactionSuccessful();
 			}
+			
+			db.setTransactionSuccessful();
+			
 		} catch (SQLException e) {
 			Log.e("Musculo", "Erro inserir/alterar: " + e.toString());
 		}finally{
-			if(c !=null) c.close();
 			db.endTransaction();
+			if(c !=null) c.close();
 			if(db!=null) db.close();
 		}
 	}

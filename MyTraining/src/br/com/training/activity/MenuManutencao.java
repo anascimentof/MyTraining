@@ -17,11 +17,11 @@ import br.com.training.activity.musculo.ListaMusculo;
 public class MenuManutencao extends ListActivity {
 	private String[] opcoes = new String[] { "Categoria Muscular" ,
 											 "Músculo",
-											 "Equipamento" , 
 											 "Marca Equipamento",
+											 "Equipamento" , 
 											 "Grupo Exercício",
-											 "Exercio",
-											 "Voltar"};	
+											 "Exercício",
+											 "Voltar"};
 	
 	private static final int CATEGORIA_MUSCULAR = 0;
 	private static final int MUSCULO 			= 1;

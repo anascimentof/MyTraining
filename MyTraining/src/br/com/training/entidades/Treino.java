@@ -1,17 +1,17 @@
 package br.com.training.entidades;
 
+import java.io.Serializable;
+
 import android.text.format.Time;
 
-public class Treino {
+public class Treino implements Serializable {
 
-	private String codigo;
-	private String descricao;
-	private ExMusculacao exMuscular[];
-	private Time tempoDuracao;
-
-	public Treino(){
-		
-	}
+	private static final long serialVersionUID = 1L;
+	
+	private String 			codigo;
+	private String 			descricao;
+	private ExMusculacao 	exMuscular[];
+	private Time			tempoDuracao;
 
 	public Treino(String codigo, String descricao, ExMusculacao[] exMuscular,
 			Time tempoDuracao) {
@@ -51,6 +51,10 @@ public class Treino {
 
 	public void setTempoDuracao(Time tempoDuracao) {
 		this.tempoDuracao = tempoDuracao;
+	}
+	
+	public String toString(){
+		return this.descricao;
 	}
 	
 }

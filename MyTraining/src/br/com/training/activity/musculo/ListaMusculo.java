@@ -1,7 +1,5 @@
 package br.com.training.activity.musculo;
 
-import java.util.List;
-
 import android.R;
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -54,7 +52,7 @@ public class ListaMusculo extends ListActivity {
 	public void listarMusculos(){
 		setListAdapter(new ArrayAdapter<Musculo>(this, 
 												R.layout.simple_list_item_1, 
-												musculoDAO.listar()));
+												musculoDAO.listarMusculoCategoria()));
 		if(getListAdapter().isEmpty()) Toast.makeText(this, "Lista vazia.", Toast.LENGTH_LONG).show();
 	}
 	
