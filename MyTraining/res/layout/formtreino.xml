@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+formtreino/linerlayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <br.com.training.components.ConsistenciaMSG
+        android:id="@+formtreino/txtconsistenciaMSG"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+formtreino/txtdescricao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Descrição"
+        android:textColor="@color/AMARELO" />
+
+    <EditText
+        android:id="@+formtreino/edtdescricao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:lines="1"
+        android:maxLength="50"
+        android:maxLines="1" >
+
+        <requestFocus />
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Spinner
+            android:id="@+formtreino/spntempoduracao"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+formtreino/btnsalvar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:src="@drawable/salvar" />
+
+        <ImageButton
+            android:id="@+formtreino/btnvoltar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:src="@drawable/sair" />
+
+    </LinearLayout>
+
+</LinearLayout>

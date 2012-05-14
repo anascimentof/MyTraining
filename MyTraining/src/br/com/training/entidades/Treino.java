@@ -11,14 +11,18 @@ public class Treino implements Serializable {
 	private String 			codigo;
 	private String 			descricao;
 	private ExMusculacao 	exMuscular[];
-	private Time			tempoDuracao;
+	private String			tempoDuracao;
 
+	public Treino(){
+		super();
+	}
+	
 	public Treino(String codigo, String descricao, ExMusculacao[] exMuscular,
-			Time tempoDuracao) {
-		this.codigo = codigo;
-		this.descricao = descricao;
-		this.exMuscular = exMuscular;
-		this.tempoDuracao = tempoDuracao;
+			String tempoDuracao) {
+		this.codigo 		= codigo;
+		this.descricao 		= descricao;
+		this.exMuscular 	= exMuscular;
+		this.tempoDuracao 	= tempoDuracao;
 	}
 
 	public String getCodigo() {
@@ -45,11 +49,11 @@ public class Treino implements Serializable {
 		this.exMuscular = exMuscular;
 	}
 
-	public Time getTempoDuracao() {
+	public String getTempoDuracao() {
 		return tempoDuracao;
 	}
 
-	public void setTempoDuracao(Time tempoDuracao) {
+	public void setTempoDuracao(String tempoDuracao) {
 		this.tempoDuracao = tempoDuracao;
 	}
 	

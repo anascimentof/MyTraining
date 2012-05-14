@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import br.com.training.activity.treino.ListaTreino;
 import br.com.training.dao.MyDataBase;
 
 public class MenuPrincipal extends ListActivity {
@@ -42,7 +43,7 @@ public class MenuPrincipal extends ListActivity {
 			Toast.makeText(this, "Agenda", Toast.LENGTH_SHORT).show();
 			break;
 		case TREINO:
-			Toast.makeText(this, "Treino", Toast.LENGTH_SHORT).show();
+			startActivity(new Intent(this, ListaTreino.class));
 			break;
 		case MANUTENCAO:
 			startActivity(new Intent(this , MenuManutencao.class) ) ;

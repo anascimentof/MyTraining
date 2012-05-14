@@ -122,7 +122,7 @@ public class MyDataBase extends SQLiteOpenHelper {
 		sb.delete(0, sb.length());
 		sb.append("CREATE TABLE IF NOT EXISTS " + TBTREINO + " ");
 		sb.append(" (codigo text(1) PRIMARY KEY, "); 
-		sb.append(" descricao text(50) NOT NULL, tempoDuracao time );" );
+		sb.append(" descricao text(50) NOT NULL, tempoDuracao text(8) );" );
 		db.execSQL(sb.toString());	
 		sb.delete(0, sb.length());
 		sb.append("CREATE TABLE IF NOT EXISTS " + TBTREINOXEXERCICIO + " ");

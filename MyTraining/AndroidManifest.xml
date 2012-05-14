@@ -26,6 +26,8 @@
         <activity android:name=".grupoexercicio.FormGrupoExercicio" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Grupo Exercicio" android:enabled="true"></activity>
         <activity android:name=".exercicio.ListaExercicio" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Exercícios" android:enabled="true"></activity>
         <activity android:name=".exercicio.FormExercicio" android:label="Menu &gt;&gt; Manutenção &gt;&gt; Manut. Exercício" android:enabled="true"></activity>
+        <activity android:enabled="true" android:name=".treino.ListaTreino" android:label="Menu &gt;&gt; Treino"></activity>
+        <activity android:enabled="true" android:name=".treino.FormTreino" android:label="Menu &gt;&gt; Treino &gt;&gt; Manut. Treino"></activity>
        
 
     </application>
