@@ -11,6 +11,19 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+formtreino/txtCodigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Treino" android:textColor="@color/AMARELO"/>
+
+    <EditText
+        android:id="@+formtreino/edtCodigo"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:lines="1" />
+
+    <TextView
         android:id="@+formtreino/txtdescricao"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -36,7 +49,9 @@
         <Spinner
             android:id="@+formtreino/spntempoduracao"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:drawSelectorOnTop="true"
+            />
 
     </LinearLayout>
 

@@ -30,7 +30,7 @@ public class ListaTreino extends ListActivity {
 	private TreinoDAO treinoDAO = new TreinoDAO(ListaTreino.this);
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -91,7 +91,7 @@ public class ListaTreino extends ListActivity {
 		
 		switch (item.getItemId()) {
 		case ALTERAR:
-			Intent alteracao = new Intent(ListaTreino.this, FormEquipamento.class );
+			Intent alteracao = new Intent(ListaTreino.this, FormTreino.class );
 			alteracao.putExtra("treinoSelecionado", (Treino) treinoSelecionado ) ;
 			startActivity(alteracao);
 			break;

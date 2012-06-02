@@ -6,4 +6,6 @@
     <string name="msg_Campo_Descricao_em_branco">Informe o campo descrição</string>
     <string name="msg_Grupo_Exercicio_salvo_com_sucesso">Grupo de Exercício salvo com sucesso.</string>
     <string name="msg_lista_vazia">Lista Vazia</string>
+    <string name="label_tempo_de_duracao">Tempo de Duração (HH:MM)</string>
+    <string name="msg_Campo_Codigo_em_branco">Informe o campo código </string>
 </resources>

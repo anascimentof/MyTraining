@@ -9,22 +9,29 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 import br.com.training.activity.R;
+import br.com.training.components.ConsistenciaMSG;
+import br.com.training.dao.TreinoDAO;
 import br.com.training.entidades.Treino;
 
 public class FormTreino extends Activity {
 	private	EditText		edtDescricao;
+	private EditText		edtCodigo;
 	private	Spinner			spnTempoDuracao;
 	private	ImageButton		btnSalvar;
 	private	ImageButton		btnVoltar;
 	private	Treino			treinoSelecionado;
-	private static final String[] itens = new String[]{ "00:30" ,  //0
-													    "01:00" ,  //1
-													    "01:30" ,  //2
-													    "02:00" ,  //3
-													    "Informar outro tempo"
+	private ConsistenciaMSG	txtConsistencia;
+	private TreinoDAO		treinoDAO = new TreinoDAO(FormTreino.this);
+	private static final String[] itens = new String[]{ "Selecione",//0
+														"00:30" ,  //1
+													    "01:00" ,  //2
+													    "01:30" ,  //3
+													    "02:00" ,  //4
+													    "Informar outro tempo" //5
 														};
-	private ArrayAdapter<String> adaptador = new ArrayAdapter<String>(FormTreino.this, android.R.layout.simple_spinner_dropdown_item, itens);
+	private ArrayAdapter<String> adaptador; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +41,20 @@ public class FormTreino extends Activity {
 		setContentView(R.layout.formtreino);
 		spnTempoDuracao		= (Spinner)		findViewById(R.formtreino.spntempoduracao);
 		edtDescricao		= (EditText)	findViewById(R.formtreino.edtdescricao);
+		edtCodigo			= (EditText)	findViewById(R.formtreino.edtCodigo);
 		btnSalvar			= (ImageButton)	findViewById(R.formtreino.btnsalvar);
 		btnVoltar			= (ImageButton) findViewById(R.formtreino.btnvoltar);
+		txtConsistencia		= (ConsistenciaMSG) findViewById(R.formtreino.txtconsistenciaMSG);
 		
-		spnTempoDuracao.setPrompt("Tempo de Duração (HH:MM)");
+		
+		spnTempoDuracao.setPrompt(getString(R.string.label_tempo_de_duracao));
+		adaptador = new ArrayAdapter<String>(FormTreino.this, android.R.layout.simple_spinner_item, itens);
 		adaptador.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 		spnTempoDuracao.setAdapter(adaptador);
 		
 		treinoSelecionado = (Treino) getIntent().getSerializableExtra("treinoSelecionado");
 		
-		if(treinoSelecionado != null){
+		if(treinoSelecionado == null){
 			treinoSelecionado = new Treino();
 		}else{
 			edtDescricao.setText(treinoSelecionado.getDescricao());
@@ -52,7 +63,18 @@ public class FormTreino extends Activity {
 		
 		btnSalvar.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				
+				if(validar()){
+					treinoSelecionado.setCodigo(edtCodigo.getEditableText().toString().trim());
+					treinoSelecionado.setDescricao(edtDescricao.getEditableText().toString().trim());
+					treinoSelecionado.setTempoDuracao(spnTempoDuracao.getSelectedItem().toString());
+					
+					treinoDAO.salvar(treinoSelecionado);
+					
+					edtDescricao.setText("");
+					Toast.makeText(FormTreino.this, "Treino salvo com sucesso!", Toast.LENGTH_LONG).show();
+					edtDescricao.setFocusable(true);
+					spnTempoDuracao.setSelection(0);
+				}
 			}
 		});
 		
@@ -73,24 +95,46 @@ public class FormTreino extends Activity {
 	
 	public int retornarPosicaoCombo(String tempo){
 		
-		if(tempo=="00:30"){
+		if(tempo.equals("Selecione")){
 			return 0;
 		}else{
-			if(tempo=="01:00"){
+			if(tempo.equals("00:30")){
 				return 1;
 			}else{
-				if(tempo=="01:30"){
+				if(tempo.equals("01:00")){
 					return 2;
 				}else{
-					if(tempo=="02:00"){
+					if(tempo.equals("01:30")){
 						return 3;
 					}else{
-						return 99;
+						if(tempo.equals("02:00")){
+							return 4;
+						}else{
+							return 5;
+						}
 					}
 				}
 			}
 		}
 		
+	}
+	
+	public boolean validar(){
+		txtConsistencia.setText("");
+		if(edtCodigo.getText().toString().trim().equals("")){
+			txtConsistencia.mensagem(getString(R.string.msg_Campo_Codigo_em_branco), ConsistenciaMSG.ERRO);
+			return false;
+		}
+		
+		if(edtDescricao.getText().toString().trim().equals("")){
+			txtConsistencia.mensagem(getString(R.string.msg_Campo_Descricao_em_branco), ConsistenciaMSG.ERRO);
+			return false;
+		}
+		if(spnTempoDuracao.getSelectedItemPosition()==0){
+			txtConsistencia.mensagem("Selecione um Tempo de duração", ConsistenciaMSG.ERRO);
+			return false;
+		}
+		return true;
 	}
 	
 }

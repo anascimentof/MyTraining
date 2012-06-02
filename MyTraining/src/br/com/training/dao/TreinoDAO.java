@@ -36,6 +36,7 @@ public class TreinoDAO extends SQLiteOpenHelper {
 		Cursor 			cursor 	= null;
 		db = getReadableDatabase();
 		try{
+			listaTreino.clear();
 			cursor = db.query(MyDataBase.TBTREINO, COLUNAS, null, null, null, null, null);
 			while (cursor.moveToNext()) {
 				Treino treino = new Treino();
@@ -59,7 +60,6 @@ public class TreinoDAO extends SQLiteOpenHelper {
 	public void salvar(Treino treino){
 
 		SQLiteDatabase 	db;
-		String 			id 		= treino.getCodigo();
 		ContentValues	dados;
 		db = getWritableDatabase();
 		
@@ -67,10 +67,10 @@ public class TreinoDAO extends SQLiteOpenHelper {
 			db.beginTransaction();
 			dados = obterContentValues(treino);
 
-			if(id != ""){
-				db.update( MyDataBase.TBTREINO, dados, "codigo=?", new String[]{ treino.getCodigo() } );
-			}else{
+			if(treino.getCodigo() == null){
 				db.insert( MyDataBase.TBTREINO, null, dados );
+			}else{
+				db.update( MyDataBase.TBTREINO, dados, "codigo=?", new String[]{ treino.getCodigo() } );
 			}
 			
 			db.setTransactionSuccessful();
