@@ -17,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import br.com.training.activity.R;
-import br.com.training.activity.equipamento.FormEquipamento;
 import br.com.training.dao.TreinoDAO;
 import br.com.training.entidades.Treino;
 
@@ -70,7 +69,9 @@ public class ListaTreino extends ListActivity {
 	public boolean onOptionsItemSelected( MenuItem item){
 		switch (item.getItemId()) {
 		case NOVO:
-			startActivity(new Intent(this, FormTreino.class));
+			Intent novo = new Intent(ListaTreino.this, FormTreino.class);
+			novo.putExtra("modo", "N");
+			startActivity(novo);
 			return true;
 		case VOLTAR:
 			finish();
@@ -93,6 +94,7 @@ public class ListaTreino extends ListActivity {
 		case ALTERAR:
 			Intent alteracao = new Intent(ListaTreino.this, FormTreino.class );
 			alteracao.putExtra("treinoSelecionado", (Treino) treinoSelecionado ) ;
+			alteracao.putExtra("modo", "A");
 			startActivity(alteracao);
 			break;
 		case DELETAR:

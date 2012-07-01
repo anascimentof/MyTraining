@@ -121,8 +121,10 @@ public class MyDataBase extends SQLiteOpenHelper {
 		db.execSQL(sb.toString());
 		sb.delete(0, sb.length());
 		sb.append("CREATE TABLE IF NOT EXISTS " + TBTREINO + " ");
-		sb.append(" (codigo text(1) PRIMARY KEY, "); 
-		sb.append(" descricao text(50) NOT NULL, tempoDuracao text(8) );" );
+		sb.append(" (codigo text(1) NOT NULL, "					);
+		sb.append(" descricao text(50) NOT NULL, "				);
+		sb.append(" tempoDuracao text(8), "						);
+		sb.append(" CONSTRAINT [] PRIMARY KEY([codigo]));"		);
 		db.execSQL(sb.toString());	
 		sb.delete(0, sb.length());
 		sb.append("CREATE TABLE IF NOT EXISTS " + TBTREINOXEXERCICIO + " ");

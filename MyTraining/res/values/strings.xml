@@ -8,4 +8,13 @@
     <string name="msg_lista_vazia">Lista Vazia</string>
     <string name="label_tempo_de_duracao">Tempo de Duração (HH:MM)</string>
     <string name="msg_Campo_Codigo_em_branco">Informe o campo código </string>
+    <string name="msg_Codigo_Ja_Existe">Código do Treino já existe. Favor cadastrar outro código.</string>
+    <string-array name="spn_tempos_duracao">
+        <item >00:30</item>
+        <item >01:00</item>
+        <item >01:30</item>
+        <item >02:00</item>
+        <item >Informar outro tempo</item>
+    </string-array>
+    
 </resources>
