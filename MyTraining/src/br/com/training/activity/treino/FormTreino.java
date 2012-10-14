@@ -1,9 +1,13 @@
 package br.com.training.activity.treino;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -16,24 +20,30 @@ import br.com.training.dao.TreinoDAO;
 import br.com.training.entidades.Treino;
 
 public class FormTreino extends Activity {
-	private String			modo;
-	private	EditText		edtDescricao;
-	private EditText		edtCodigo;
-	private	Spinner			spnTempoDuracao;
-	private	ImageButton		btnSalvar;
-	private	ImageButton		btnVoltar;
-	private	Treino			treinoSelecionado;
-	private ConsistenciaMSG	txtConsistencia;
-	private TreinoDAO		treinoDAO = new TreinoDAO(FormTreino.this);
-	
+	private String				modo;
+	private	EditText			edtDescricao;
+	private EditText			edtCodigo;
+	private	Spinner				spnTempoDuracao;
+	private	ImageButton			btnSalvar;
+	private	ImageButton			btnVoltar;
+	private ImageButton			dialog_btnSalvar;
+	private	Treino				treinoSelecionado;
+	private ConsistenciaMSG		txtConsistencia;
+	private TreinoDAO			treinoDAO = new TreinoDAO(FormTreino.this);
+	private AlertDialog.Builder builder;
+	private AlertDialog 		alertDialog;
+	private Context				context = FormTreino.this;
+	private LayoutInflater 		inflater;
+	private View				layout;
 	private ArrayAdapter<String> adaptador; 
+	private EditText			edtduracao;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.formtreino);
+		
 		spnTempoDuracao		= (Spinner)			findViewById(R.formtreino.spntempoduracao);
 		edtDescricao		= (EditText)		findViewById(R.formtreino.edtdescricao);
 		edtCodigo			= (EditText)		findViewById(R.formtreino.edtCodigo);
@@ -41,6 +51,15 @@ public class FormTreino extends Activity {
 		btnVoltar			= (ImageButton) 	findViewById(R.formtreino.btnvoltar);
 		txtConsistencia		= (ConsistenciaMSG) findViewById(R.formtreino.txtconsistenciaMSG);
 		
+		inflater			= (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+		layout 				= inflater.inflate(R.layout.dialog_selecionar_duracao, (ViewGroup) findViewById(R.dialog_selecionar.layout_root) );
+		edtduracao			= (EditText) layout.findViewById(R.dialog_selecionar.edtduracao);
+		dialog_btnSalvar	= (ImageButton)		findViewById(R.dialog_selecionar.btnsalvar);
+
+		builder				= new AlertDialog.Builder(context);
+		builder.setView(layout);
+		alertDialog 		= builder.create();		
+
 		edtCodigo.setFocusable(true);
 		spnTempoDuracao.setPrompt(getString(R.string.label_tempo_de_duracao));
 		adaptador = new ArrayAdapter<String>(FormTreino.this, 
@@ -56,9 +75,9 @@ public class FormTreino extends Activity {
 			treinoSelecionado = new Treino();
 		}else{
 			if(modo.equals("A")){
-			edtCodigo.setText(treinoSelecionado.getCodigo());	
-			edtDescricao.setText(treinoSelecionado.getDescricao());
-			spnTempoDuracao.setSelection(retornarPosicaoCombo(treinoSelecionado.getTempoDuracao()));
+				edtCodigo.setText(treinoSelecionado.getCodigo());	
+				edtDescricao.setText(treinoSelecionado.getDescricao());
+				spnTempoDuracao.setSelection(retornarPosicaoCombo(treinoSelecionado.getTempoDuracao()));
 			}
 		}
 		
@@ -88,6 +107,10 @@ public class FormTreino extends Activity {
 		
 		spnTempoDuracao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				
+				if(arg0.getSelectedItemId()==4){ // Opção 4 - Informe outro tempo
+					alertDialog.show();
+				}
 				treinoSelecionado.setTempoDuracao(arg0.getSelectedItem().toString());
 			}
 
@@ -99,19 +122,18 @@ public class FormTreino extends Activity {
 	public int retornarPosicaoCombo(String tempo){
 		
 			if(tempo.equals("00:30")){
-				return 1;
+				return 0;
 			}else{
 			 	if(tempo.equals("01:00")){
-					return 2;
+					return 1;
 				}else{
 					if(tempo.equals("01:30")){
-						return 3;
+						return 2;
 					}else{
 						if(tempo.equals("02:00")){
-							return 4;
+							return 3;
 						}else{
-							//TODO Chamar Dialog Custom --> http://developer.android.com/guide/topics/ui/dialogs.html
-							return 5;
+							return 4;
 						}
 					}
 				}

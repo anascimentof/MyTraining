@@ -16,5 +16,6 @@
         <item >02:00</item>
         <item >Informar outro tempo</item>
     </string-array>
+    <string name="string_duracao">Duração</string>
     
 </resources>

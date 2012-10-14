@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+dialog_selecionar/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+dialog_selecionar/txtduracao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_duracao"
+        android:textColor="@color/AMARELO" />
+
+    <EditText
+        android:id="@+dialog_selecionar/edtduracao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Informe duração"
+        android:inputType="text"
+        android:lines="1"
+        android:maxLines="1" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageButton
+        android:id="@+dialog_selecionar/btnsalvar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/salvar" />
+
+</LinearLayout>
